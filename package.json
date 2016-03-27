@@ -1,0 +1,13 @@
+{
+	"name": "采集器",
+	"main": "taobao.html",
+
+	"window": {
+		"toolbar": true,
+		"icon": "taobao.ico",
+		"width": 1024,
+		"height":760,
+		"min_width": 800,
+		"min_height": 600
+	}	
+}

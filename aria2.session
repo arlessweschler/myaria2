@@ -1,0 +1,44 @@
+download/be4455caee681505f2dff765a08c68393a001d0e.torrent
+ gid=ae09b54fec38fca5
+ max-tries=0
+ dir=download
+ split=10
+ max-download-limit=0
+ file-allocation=trunc
+ continue=true
+ max-connection-per-server=10
+ min-split-size=20971520
+ retry-wait=20
+ user-agent=Transmission/2.77
+ max-upload-limit=30
+ seed-ratio=1.0
+ bt-save-metadata=true
+download/a0351c8a61025135cdbf24846c94fbdba7973d7f.torrent
+ gid=73ccc22243378e8e
+ max-tries=0
+ dir=download
+ split=10
+ max-download-limit=0
+ file-allocation=trunc
+ continue=true
+ max-connection-per-server=10
+ min-split-size=20971520
+ retry-wait=20
+ user-agent=Transmission/2.77
+ max-upload-limit=30
+ seed-ratio=1.0
+ bt-save-metadata=true
+download/128825feb31f7d999febb99d43629603730256fb.torrent
+ gid=a3ae3360b45381e5
+ pause=true
+ max-tries=0
+ dir=download
+ split=10
+ file-allocation=trunc
+ continue=true
+ max-connection-per-server=10
+ min-split-size=20971520
+ retry-wait=20
+ user-agent=Transmission/2.77
+ seed-ratio=1.0
+ bt-save-metadata=true

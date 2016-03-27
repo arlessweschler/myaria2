@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta charset="gbk">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>仙人摘淘</title>
+    <link href="pub/css/bootstrap.min.css" rel="stylesheet">
+
+	<script src="pub/js/jquery.min.js"></script>
+    <script src="pub/js/bootstrap.min.js"></script>
+    <script src="pub/js/jquery.jsonrpcclient.js"></script>
+    <script src="tb.js"></script>
+    <script src="tbi.js"></script>
+
+<style>
+.tab-content {
+	margin-top: 10px;
+}
+</style>
+
+<script>
+var foo = new $.JsonRpcClient({ajaxUrl: 'http://localhost:6800/jsonrpc'});
+
+
+spawn = require('child_process').spawn;
+aria2cobj = spawn('aria2c', ['--enable-rpc=true','--user-agent=Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.204 Safari/534.16','--rpc-listen-all=true','--rpc-allow-origin-all=true','--disk-cache=10M','--min-split-size=20M','--file-allocation=trunc','--max-connection-per-server=10','--max-tries=0','--retry-wait=20','--dir=download','--continue=true','--input-file=aria2.session','--save-session=aria2.session','--save-session-interval=5','--listen-port=7770','--dht-listen-port=7600-7760','--peer-id-prefix=-TR2770-','--user-agent=Transmission/2.77','--bt-save-metadata=true']);
+
+aria2cobj.stdout.on('data',function(data){
+	//if(data == '' )return false;
+	//$('#outdiv3').append('<div class="alert alert-info">'+data.lenth+'</div>');
+	$('#outdiv3').append('<div class="alert alert-info">'+data+'</div>');
+});
+
+
+$(function(){
+
+$('#myTab a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+
+});
+</script>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<form class="navbar-form navbar-left" role="search">
+					<div class="input-group input-group-sm">
+						<span class="input-group-addon" id="basic-addon1">列表页地址</span>
+						<input id="url" type="text" class="form-control" aria-describedby="basic-addon1" size="40">
+					</div> 
+					<div class="input-group input-group-sm">
+						<span class="input-group-addon" id="basic-addon2">开始页</span>
+						<input id="start" type="text" class="form-control" aria-describedby="basic-addon2" size="1" value="1">
+					</div> 
+					<div class="input-group input-group-sm">
+						<span class="input-group-addon" id="basic-addon3">结束页</span>
+						<input id="end" type="text" class="form-control" aria-describedby="basic-addon3" size="1" value="1">
+					</div> 
+					<button type="button" class="btn btn-default btn-sm" onclick="gopage($('#url').val(),$('#start').val() ,$('#end').val());">
+						抓
+					</button>
+					<button type="button" class="btn btn-default btn-sm" onclick="$('#outdiv').empty();$('#outdiv2').empty();$('#outdiv3').empty();">Clear</button>
+				</form>
+			</div>
+			
+			<ul class="nav nav-sm nav-pills" id="myTab">
+			  <li role="presentation" class="active"><a href="#st1">产品列表</a></li>
+			  <li role="presentation"><a href="#st2" onclick="getimgcmd()";>图片列表</a></li>
+			  <li role="presentation"><a href="#st3">服务消息</a></li>
+			  <li role="presentation"><a href="#st4">YAAW</a></li>
+			</ul>
+			<div class="tab-content">
+			  <div class="tab-pane fade in active" id="st1"><div id="outdiv"></div></div>
+			  <div class="tab-pane fade" id="st2"><div id="outdiv2"></div></div>
+			  <div class="tab-pane fade" id="st3"><div id="outdiv3"></div></div>
+			  <div class="tab-pane fade" id="st4"><iframe src="yaaw/index.html" id="iframepage" width="100%" frameborder="0" scrolling="yes" style="overflow-x:hidden;" marginheight="0" marginwidth="0"></iframe></div>
+			</div>
+
+
+		</div>
+	</div>
+<script type="text/javascript" language="javascript">   
+$(function(){
+	$('#iframepage').height($(window).height()-110);
+
+	$(window).resize(function() {
+		$('#iframepage').height($(window).height()-110);
+	});
+});
+</script>
+  </body>
+</html>
