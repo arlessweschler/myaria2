@@ -61,6 +61,8 @@ function getimgcmd(){
 
 				tmppath = shoppath != '' ? shoppath+'/' : '';
 
+				$('#outdiv2').append('<div class="alert alert-info">'+imgurl+'</div>');
+
 foo.call(
 	'aria2.addUri', [[imgurl],{"dir":'images/'+tmppath+pathname}],
 	function(result) { 

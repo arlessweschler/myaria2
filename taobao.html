@@ -30,6 +30,10 @@ aria2cobj = spawn('aria2c', ['--enable-rpc=true','--user-agent=Mozilla/5.0 (Wind
 
 aria2cobj.stdout.on('data',function(data){
 	//if(data == '' )return false;
+	datadiv = $('<div class="alert alert-info">'+data+'</div>');
+	if($(datadiv).html().trim() == ''){
+		return false;
+	}
 	//$('#outdiv3').append('<div class="alert alert-info">'+data.lenth+'</div>');
 	$('#outdiv3').append('<div class="alert alert-info">'+data+'</div>');
 });
